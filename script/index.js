@@ -1,12 +1,11 @@
-<<<<<<< Updated upstream
 const cards = document.querySelectorAll(".container");
-function generateElement(tag, className, parentNode) {
+let generateElement = (tag, className, parentNode) => {
   const tagName = document.createElement(tag);
   tagName.classList.add(className);
   parentNode.appendChild(tagName);
   return tagName;
-}
-function createCards(url, title, category, recipe, videoLink, sectionNum) {
+};
+let createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   const card = generateElement("div", "card", cards[sectionNum]);
   const imgContainer = generateElement("div", "img-container", card);
   const cardImg = generateElement("img", "card-img", imgContainer);
@@ -25,8 +24,7 @@ function createCards(url, title, category, recipe, videoLink, sectionNum) {
     const videoIcon = generateElement("i", "fab", cardVideo);
     videoIcon.classList.add("fa-youtube");
   }
-}
-=======
+};
 let request = (url, callback) => {
   let xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
@@ -81,4 +79,3 @@ let displayData = () => {
   });
 };
 displayData();
->>>>>>> Stashed changes
