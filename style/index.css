@@ -4,65 +4,79 @@
   box-sizing: border-box;
   outline: none;
 }
+
 :root {
   --textColor: #3d455c;
   --primaryColor: #F3463D;
 }
-body{
+
+body {
   background-color: #FFF5EC;
   font-family: 'Nunito', sans-serif;
 }
+
 /* ************Header************ */
-.header{
+
+.header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   margin-top: -20px;
 }
-.logo-img{
-  width:400px;
+
+.logo-img {
+  width: 400px;
   height: 200px;
   margin: -30px 0 0 -150px;
 }
-.logo-img img{
+
+.logo-img img {
   width: 100%;
   height: 100%;
 }
-.nav{
+
+.nav {
   width: 50%;
 }
-.nav ul{ 
+
+.nav ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-.nav li{
+
+.nav li {
   list-style: none;
   color: var(--textColor);
   font-weight: bold;
   font-size: 18px;
 }
+
 /* ********Main***************** */
-main{
+
+main {
   padding: 15px;
   margin: 0 20%;
   display: flexbox;
 }
-.title{
+
+.title {
   color: var(--primaryColor);
   padding: 10px;
 }
-.food-input{
-  width:70%;
+
+.food-input {
+  width: 70%;
   height: 5vh;
   border-radius: 15px 50px 15px 15px;
-  border:none;
+  border: none;
   padding: 10px;
 }
-.search-btn{
+
+.search-btn {
   height: 5vh;
-  width:15%;
-  border:none;
+  width: 15%;
+  border: none;
   border-radius: 15px 15px 15px 50px;
   background-color: var(--primaryColor);
   color: #fff;
@@ -70,26 +84,26 @@ main{
 }
 
 /*  Media Query */
-@media (max-width:425px){
-  .header{
+
+@media (max-width:425px) {
+  .header {
     flex-direction: column;
   }
-  .logo-img{
-    width:108%;
+  .logo-img {
+    width: 108%;
     margin: auto;
     height: 170px;
   }
   .nav {
     width: 100%;
   }
-  .nav li{
+  .nav li {
     font-size: 14px;
   }
-  main{
+  main {
     margin: 0 15px;
   }
-  .search-btn{
-    width:28%;
-
-}
+  .search-btn {
+    width: 28%;
+  }
 }
