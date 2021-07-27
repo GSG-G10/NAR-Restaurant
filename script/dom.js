@@ -1,11 +1,13 @@
 const cards = document.querySelectorAll(".container");
-let generateElement = (tag, className, parentNode) => {
+// Create Element and append it to his parent
+const generateElement = (tag, className, parentNode) => {
   const tagName = document.createElement(tag);
   tagName.classList.add(className);
   parentNode.appendChild(tagName);
   return tagName;
 };
-let createCards = (url, title, category, recipe, videoLink, sectionNum) => {
+// Create Card function (to display api data in html file )
+const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   const card = generateElement("div", "card", cards[sectionNum]);
   const imgContainer = generateElement("div", "img-container", card);
   const cardImg = generateElement("img", "card-img", imgContainer);
