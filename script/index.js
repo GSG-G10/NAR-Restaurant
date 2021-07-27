@@ -37,3 +37,23 @@ function request (url,callback) {
   xhr.open("GET", url)
   xhr.send()
 }
+
+(function getValueOfInput() {
+  const submit = document.querySelectorAll(".search-btn");
+  const input = document.querySelectorAll(".food-input");
+  submit.forEach((ele,index) => {
+    ele.addEventListener("click", () => {
+      if (index === 0) {
+        request(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input[index].value}`,(data)=>{
+
+        })
+
+      } else {
+        request(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[index].value}`,(data)=>{
+        
+        
+        })
+      }
+    })
+  })
+})();
