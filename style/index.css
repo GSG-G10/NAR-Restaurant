@@ -4,14 +4,17 @@
   box-sizing: border-box;
   outline: none;
 }
+
 :root {
   --textColor: #3d455c;
   --primaryColor: #f3463d;
 }
+
 body {
-  background-color: #fff5ec;
+  background-color: #FFF5EC;
   font-family: 'Nunito', sans-serif;
 }
+
 /* ************Header************ */
 .all-container {
   display: flex;
@@ -19,6 +22,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .header {
   display: flex;
   align-items: center;
@@ -47,17 +51,21 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
+
 .nav li {
   list-style: none;
   color: var(--textColor);
   font-weight: bold;
   font-size: 18px;
 }
+
 /* ********Main***************** */
+
 main {
   padding: 15px;
   width: 80%;
 }
+
 .title {
   color: var(--primaryColor);
   padding: 10px;
@@ -102,10 +110,8 @@ main {
 @media screen and (max-width: 500px) {
   .search-btn {
     font-size: 12px;
-  }
 }
-/*  Media Query */
-
+}
 @media (max-width: 600px) {
   .nav {
     width: 100%;
