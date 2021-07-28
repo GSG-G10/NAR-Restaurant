@@ -1,4 +1,3 @@
-// Create Element and append it to his parent
 const generateElement = (tag, className, parentNode) => {
   const tagName = document.createElement(tag);
   tagName.classList.add(className);
@@ -6,19 +5,17 @@ const generateElement = (tag, className, parentNode) => {
   return tagName;
 };
 
-
 const generateHtmlSection = (sectionName) => {
   const mainSection = document.querySelector(".main-section");
-  
+
   const nameSection = generateElement("section", sectionName, mainSection);
-  
+
   const sectionTitle = generateElement("h2", "title", nameSection);
-  
+
   sectionTitle.textContent = `${sectionName} Recipe`;
 
-  
   const searchForm = generateElement("div", "search-form", nameSection);
-  
+
   const inputSearch = generateElement("input", "food-input", searchForm);
   inputSearch.placeholder = `Enter the name of the ${sectionName}`;
   inputSearch.type = "text";
@@ -26,12 +23,10 @@ const generateHtmlSection = (sectionName) => {
   buttonSearch.type = "submit";
   buttonSearch.textContent = "Search";
   const cards = generateElement("div", "container", nameSection);
-  
-}
+};
 
-
-generateHtmlSection("meal")
-generateHtmlSection("drink")
+generateHtmlSection("meal");
+generateHtmlSection("drink");
 
 const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   const cards = document.querySelectorAll(".container");
@@ -64,7 +59,7 @@ const displayData = () => {
         input[index].style.cssText = "border:none";
         const cards = document.querySelectorAll(".container");
         if (index === 0) {
-          cards[0].textContent=''
+          cards[0].textContent = "";
           request(
             `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[index].value}`,
             (data) => {
@@ -81,11 +76,10 @@ const displayData = () => {
             }
           );
         } else {
-          cards[1].textContent=''
+          cards[1].textContent = "";
           request(
             `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[index].value}`,
             (data) => {
-  
               for (let i = 0; i < 6; i++) {
                 createCards(
                   data.drinks[i].strDrinkThumb,
@@ -99,13 +93,10 @@ const displayData = () => {
             }
           );
         }
-       } else {
-         input[index].style.cssText = "border: 3px solid var(--primaryColor);";
-
-
-       }
+      } else {
+        input[index].style.cssText = "border: 3px solid var(--primaryColor);";
+      }
     });
   });
 };
 displayData();
-

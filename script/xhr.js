@@ -9,4 +9,3 @@ const request = (url, callback) => {
   xhr.open("GET", url);
   xhr.send();
 };
-
