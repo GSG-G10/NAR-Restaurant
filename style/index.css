@@ -151,6 +151,7 @@ main {
 .title {
   color: var(--primaryColor);
   padding: 10px;
+  text-transform: capitalize;
 }
 @media screen and (max-width: 500px) {
   .title {
