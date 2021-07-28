@@ -28,7 +28,7 @@ CSS
 JAVASCRIPT
 
 
-we are focues on this concepts and topics:-
+We focused on this concepts and topics:-
 1. module.
 2. abstraction - DON'T REPEAT OURSELF IN CODE.
 3. Generic Function.
