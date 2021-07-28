@@ -9,7 +9,7 @@ const generateHtmlSection = (sectionName) => {
   const mainSection = document.querySelector(".main-section");
 
   const nameSection = generateElement("section", sectionName, mainSection);
-  nameSection.id = `${sectionName}`
+  nameSection.id = `${sectionName}`;
   const sectionTitle = generateElement("h2", "title", nameSection);
 
   sectionTitle.textContent = `${sectionName} Recipe`;
@@ -45,7 +45,7 @@ const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   if (sectionNum == 0) {
     const cardVideo = generateElement("a", "card-video", detailsContainer);
     cardVideo.href = videoLink;
-    cardVideo.target = "_blank"
+    cardVideo.target = "_blank";
     const videoIcon = generateElement("i", "fab", cardVideo);
     videoIcon.classList.add("fa-youtube");
   }
@@ -63,7 +63,13 @@ const displayData = () => {
           cards[0].textContent = "";
           request(
             `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[index].value}`,
-            (data) => {
+            (error, data) => {
+              if (error) {
+                return handleMessage("meal", error);
+              }
+              if (!data.meals) {
+                return handleMessage("meal", "No data to show");
+              }
               for (let i = 0; i < 6; i++) {
                 createCards(
                   data.meals[i].strMealThumb,
@@ -74,13 +80,24 @@ const displayData = () => {
                   0
                 );
               }
+            },
+            (loading) => {
+              document.querySelector(".meal .container").textContent = loading
+                ? "loading..."
+                : "";
             }
           );
         } else {
           cards[1].textContent = "";
           request(
             `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[index].value}`,
-            (data) => {
+            (error, data) => {
+              if (error) {
+                return handleMessage("drink", error);
+              }
+              if (!data.drinks) {
+                return handleMessage("drink", "No data to show");
+              }
               for (let i = 0; i < 6; i++) {
                 createCards(
                   data.drinks[i].strDrinkThumb,
@@ -91,6 +108,11 @@ const displayData = () => {
                   1
                 );
               }
+            },
+            (loading) => {
+              document.querySelector(".drink .container").textContent = loading
+                ? "loading..."
+                : "";
             }
           );
         }
@@ -101,3 +123,6 @@ const displayData = () => {
   });
 };
 displayData();
+const handleMessage = (className, message) => {
+  document.querySelector(`.${className} .container`).textContent = message;
+};
