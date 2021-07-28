@@ -59,6 +59,88 @@ body {
   font-size: 18px;
 }
 
+/************* Hero Section *************/
+.hero-section {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  position: relative;
+  padding: 80px 0 55px;
+  margin: 50px 0;
+}
+.hero-heading {
+  font-size: 3.5rem;
+  color: var(--textColor);
+  font-family: sans-serif;
+  margin-bottom: 38px;
+}
+.hero-heading span {
+  font-weight: 500;
+}
+.hero-btn {
+  border-radius: 15px 50px 15px 15px;
+  background-color: var(--primaryColor);
+  color: #fff;
+  transition: all 0.4s ease-in-out;
+  padding: 10px 38px;
+  text-decoration: none;
+}
+.hero-btn:hover {
+  background-color: #d6271d;
+}
+.bg-color {
+  background-color: #f3463d;
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  right: -55px;
+  top: 0;
+}
+.image-side {
+  width: 70%;
+}
+.image-side img {
+  width: 100%;
+}
+.bg-color::after {
+  background-image: url(../images/pattern1.png);
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -100%;
+  opacity: 0.1;
+}
+@media screen and (max-width: 1100px) {
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+  .image-side {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .hero-section {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+  .hero-heading {
+    font-size: 2rem;
+  }
+  .text-side {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .bg-color {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .hero-heading {
+    font-size: 1.5rem;
+  }
+}
 /* ********Main***************** */
 
 main {
