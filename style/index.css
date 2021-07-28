@@ -9,7 +9,9 @@
   --textColor: #3d455c;
   --primaryColor: #f3463d;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: #FFF5EC;
   font-family: 'Nunito', sans-serif;
@@ -26,9 +28,9 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  width: 100%;
+  width: 80%;
 }
 .logo-img {
   width: 5%;
@@ -36,8 +38,11 @@ body {
 }
 @media screen and (max-width: 500px) {
   .logo-img {
-    width: 10%;
+    width: 20%;
     margin: 18px 0;
+  }
+  .header {
+    justify-content: center;
   }
 }
 .logo-img img {
@@ -60,13 +65,21 @@ body {
 }
 
 /************* Hero Section *************/
+.logo-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+  height: 100vh;
+}
 .hero-section {
   display: flex;
   align-items: center;
   width: 80%;
   position: relative;
-  padding: 80px 0 55px;
-  margin: 50px 0;
+  padding: 40px 0 55px;
+  margin-bottom: 50px;
 }
 .hero-heading {
   font-size: 3.5rem;
@@ -90,11 +103,11 @@ body {
 }
 .bg-color {
   background-color: #f3463d;
-  width: 30%;
+  width: 26%;
   height: 100%;
   position: absolute;
   z-index: -1;
-  right: -55px;
+  right: 0;
   top: 0;
 }
 .image-side {

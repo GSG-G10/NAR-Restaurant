@@ -9,7 +9,7 @@ const generateHtmlSection = (sectionName) => {
   const mainSection = document.querySelector(".main-section");
 
   const nameSection = generateElement("section", sectionName, mainSection);
-
+  nameSection.id = `${sectionName}`
   const sectionTitle = generateElement("h2", "title", nameSection);
 
   sectionTitle.textContent = `${sectionName} Recipe`;
@@ -45,6 +45,7 @@ const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   if (sectionNum == 0) {
     const cardVideo = generateElement("a", "card-video", detailsContainer);
     cardVideo.href = videoLink;
+    cardVideo.target = "_blank"
     const videoIcon = generateElement("i", "fab", cardVideo);
     videoIcon.classList.add("fa-youtube");
   }
