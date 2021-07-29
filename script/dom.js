@@ -28,7 +28,15 @@ const generateHtmlSection = (sectionName) => {
 generateHtmlSection("meal");
 generateHtmlSection("drink");
 
-const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
+const createCards = (
+  url,
+  title,
+  category,
+  recipe,
+  videoLink,
+  sectionNum,
+  isVideo
+) => {
   const cards = document.querySelectorAll(".container");
   const card = generateElement("div", "card", cards[sectionNum]);
   const imgContainer = generateElement("div", "img-container", card);
@@ -42,7 +50,7 @@ const createCards = (url, title, category, recipe, videoLink, sectionNum) => {
   cardCategory.textContent = category;
   const cardRecipe = generateElement("p", "card-recipe", detailsContainer);
   cardRecipe.textContent = recipe;
-  if (sectionNum == 0) {
+  if (isVideo) {
     const cardVideo = generateElement("a", "card-video", detailsContainer);
     cardVideo.href = videoLink;
     cardVideo.target = "_blank";
@@ -77,7 +85,8 @@ const displayData = () => {
                   data.meals[i].strCategory,
                   data.meals[i].strInstructions,
                   data.meals[i].strYoutube,
-                  0
+                  0,
+                  true
                 );
               }
             },
@@ -98,14 +107,15 @@ const displayData = () => {
               if (!data.drinks) {
                 return handleMessage("drink", "No data to show");
               }
-              for (let i=0; i < Math.min(6, data.drinks.length); i++) {
+              for (let i = 0; i < Math.min(6, data.drinks.length); i++) {
                 createCards(
                   data.drinks[i].strDrinkThumb,
                   data.drinks[i].strDrink,
                   data.drinks[i].strCategory,
                   data.drinks[i].strInstructions,
                   "",
-                  1
+                  1,
+                  false
                 );
               }
             },
