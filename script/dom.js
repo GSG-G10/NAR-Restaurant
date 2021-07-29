@@ -62,80 +62,82 @@ const createCards = (
 const displayData = () => {
   const submit = document.querySelectorAll(".search-btn");
   const input = document.querySelectorAll(".food-input");
-  submit.forEach((ele, index) => {
-    ele.addEventListener("click", () => {
-      if (input[index].value.trim() !== "") {
-        input[index].style.cssText = "border:none";
-        const cards = document.querySelectorAll(".container");
-        if (index === 0) {
-          cards[0].textContent = "";
-          request(
-            `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[
-              index
-            ].value.trim()}`,
-            (error, data) => {
-              if (error) {
-                return handleMessage("meal", error);
-              }
-              if (!data.meals) {
-                return handleMessage("meal", "No data to show");
-              }
-              for (let i = 0; i < Math.min(6, data.meals.length); i++) {
-                createCards(
-                  data.meals[i].strMealThumb,
-                  data.meals[i].strMeal,
-                  data.meals[i].strCategory,
-                  data.meals[i].strInstructions,
-                  data.meals[i].strYoutube,
-                  0,
-                  true
-                );
-              }
-            },
-            (loading) => {
-              document.querySelector(".meal .container").textContent = loading
-                ? "loading..."
-                : "";
-            }
-          );
-        } else {
-          cards[1].textContent = "";
-          request(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[
-              index
-            ].value.trim()}`,
-            (error, data) => {
-              if (error) {
-                return handleMessage("drink", error);
-              }
-              if (!data.drinks) {
-                return handleMessage("drink", "No data to show");
-              }
-              for (let i = 0; i < Math.min(6, data.drinks.length); i++) {
-                createCards(
-                  data.drinks[i].strDrinkThumb,
-                  data.drinks[i].strDrink,
-                  data.drinks[i].strCategory,
-                  data.drinks[i].strInstructions,
-                  "",
-                  1,
-                  false
-                );
-              }
-            },
-            (loading) => {
-              document.querySelector(".drink .container").textContent = loading
-                ? "loading..."
-                : "";
-            }
-          );
+  submit[0].addEventListener("click", () => {
+    if (input[0].value.trim() !== "") {
+      input[0].style.cssText = "border:none";
+      const cards = document.querySelectorAll(".container");
+      cards[0].textContent = "";
+      request(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[0].value.trim()}`,
+        (error, data) => {
+          if (error) {
+            return handleMessage("meal", error);
+          }
+          if (!data.meals) {
+            return handleMessage("meal", "No data to show");
+          }
+          for (let i = 0; i < Math.min(6, data.meals.length); i++) {
+            createCards(
+              data.meals[i].strMealThumb,
+              data.meals[i].strMeal,
+              data.meals[i].strCategory,
+              data.meals[i].strInstructions,
+              data.meals[i].strYoutube,
+              0,
+              true
+            );
+          }
+        },
+        (loading) => {
+          document.querySelector(".meal .container").textContent = loading
+            ? "loading..."
+            : "";
         }
-      } else {
-        input[index].style.cssText = "border: 3px solid var(--primaryColor);";
-      }
-    });
+      );
+    } else {
+      input[0].style.cssText = "border: 3px solid var(--primaryColor);";
+    }
+  });
+
+  //  EVent listener for drink
+  submit[1].addEventListener("click", () => {
+    if (input[1].value.trim() !== "") {
+      input[1].style.cssText = "border:none";
+      const cards = document.querySelectorAll(".container");
+      cards[1].textContent = "";
+      request(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[1].value.trim()}`,
+        (error, data) => {
+          if (error) {
+            return handleMessage("drink", error);
+          }
+          if (!data.drinks) {
+            return handleMessage("drink", "No data to show");
+          }
+          for (let i = 0; i < Math.min(6, data.drinks.length); i++) {
+            createCards(
+              data.drinks[i].strDrinkThumb,
+              data.drinks[i].strDrink,
+              data.drinks[i].strCategory,
+              data.drinks[i].strInstructions,
+              "",
+              1,
+              false
+            );
+          }
+        },
+        (loading) => {
+          document.querySelector(".drink .container").textContent = loading
+            ? "loading..."
+            : "";
+        }
+      );
+    } else {
+      input[1].style.cssText = "border: 3px solid var(--primaryColor);";
+    }
   });
 };
+
 displayData();
 const handleMessage = (className, message) => {
   document.querySelector(`.${className} .container`).textContent = message;
