@@ -70,7 +70,7 @@ const displayData = () => {
               if (!data.meals) {
                 return handleMessage("meal", "No data to show");
               }
-              for (let i = 0; i < 6; i++) {
+              for (let i = 0; i < Math.min(6, data.meals.length); i++) {
                 createCards(
                   data.meals[i].strMealThumb,
                   data.meals[i].strMeal,
@@ -98,7 +98,7 @@ const displayData = () => {
               if (!data.drinks) {
                 return handleMessage("drink", "No data to show");
               }
-              for (let i = 0; i < 6; i++) {
+              for (let i=0; i < Math.min(6, data.drinks.length); i++) {
                 createCards(
                   data.drinks[i].strDrinkThumb,
                   data.drinks[i].strDrink,
