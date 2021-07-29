@@ -64,13 +64,15 @@ const displayData = () => {
   const input = document.querySelectorAll(".food-input");
   submit.forEach((ele, index) => {
     ele.addEventListener("click", () => {
-      if (input[index].value != "") {
+      if (input[index].value.trim() !== "") {
         input[index].style.cssText = "border:none";
         const cards = document.querySelectorAll(".container");
         if (index === 0) {
           cards[0].textContent = "";
           request(
-            `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[index].value}`,
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${input[
+              index
+            ].value.trim()}`,
             (error, data) => {
               if (error) {
                 return handleMessage("meal", error);
@@ -99,7 +101,9 @@ const displayData = () => {
         } else {
           cards[1].textContent = "";
           request(
-            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[index].value}`,
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input[
+              index
+            ].value.trim()}`,
             (error, data) => {
               if (error) {
                 return handleMessage("drink", error);
